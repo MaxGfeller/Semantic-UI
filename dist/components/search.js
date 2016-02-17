@@ -886,8 +886,7 @@ $.fn.search = function(parameters) {
           type = type || 'standard';
           module.debug('Displaying message', text, type);
           var results = settings.templates.message(text, type)
-          if (results === null) this.hideResults();
-          debugger
+          if (results === null) return this.hideResults();
           module.addResults( results );
           return results;
         },
