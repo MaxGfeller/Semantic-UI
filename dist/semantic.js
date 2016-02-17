@@ -13170,8 +13170,8 @@ $.fn.search = function(parameters) {
           type = type || 'standard';
           module.debug('Displaying message', text, type);
           var results = settings.templates.message(text, type)
-          if (results === null) return this.hideResults();
-          module.addResults( results );
+          if (results === null) this.hideResults();
+          if (results) module.addResults( results );
           return results;
         },
 
