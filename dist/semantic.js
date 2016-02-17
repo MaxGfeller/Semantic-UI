@@ -13504,7 +13504,7 @@ $.fn.search.settings = {
         // message type
         if(type == 'empty') {
           // if there are no results just hide the module
-          return
+          return ''
           html += ''
             + '<div class="header">No Results</div class="header">'
             + '<div class="description">' + message + '</div class="description">'
