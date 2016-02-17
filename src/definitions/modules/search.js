@@ -457,7 +457,8 @@ $.fn.search = function(parameters) {
                 module.search.remote(searchTerm);
               }
               else {
-                module.error(error.source);
+                // no need to throw an error here
+                //module.error(error.source);
               }
             }
             settings.onSearchQuery.call(element, searchTerm);
@@ -1219,7 +1220,6 @@ $.fn.search.settings = {
         // message type
         if(type == 'empty') {
           // if there are no results just hide the module
-          module.hideResults()
           return
           html += ''
             + '<div class="header">No Results</div class="header">'
