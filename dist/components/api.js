@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.1.7 - API
+ * # Semantic UI 2.1.8 - API
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -207,7 +207,8 @@ $.api = $.fn.api = function(parameters) {
           url = module.get.templatedURL();
 
           if(!url && !module.is.mocked()) {
-            module.error(error.missingURL);
+            // no need to throw an error here
+            // module.error(error.missingURL);
             return;
           }
 
@@ -793,7 +794,8 @@ $.api = $.fn.api = function(parameters) {
             if(action) {
               module.debug('Looking up url for action', action, settings.api);
               if(settings.api[action] === undefined && !module.is.mocked()) {
-                module.error(error.missingAction, settings.action, settings.api);
+                // no need to throw an error here
+                // module.error(error.missingAction, settings.action, settings.api);
                 return;
               }
               url = settings.api[action];

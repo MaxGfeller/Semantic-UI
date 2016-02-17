@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.1.7 - Search
+ * # Semantic UI 2.1.8 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1218,6 +1218,9 @@ $.fn.search.settings = {
         ;
         // message type
         if(type == 'empty') {
+          // if there are no results just hide the module
+          module.hideResults()
+          return
           html += ''
             + '<div class="header">No Results</div class="header">'
             + '<div class="description">' + message + '</div class="description">'
