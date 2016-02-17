@@ -884,8 +884,10 @@ $.fn.search = function(parameters) {
         displayMessage: function(text, type) {
           type = type || 'standard';
           module.debug('Displaying message', text, type);
-          module.addResults( settings.templates.message(text, type) );
-          return settings.templates.message(text, type);
+          var results = settings.templates.message(text, type)
+          module.addResults( results );
+          if (results === null) this.hideResults();
+          return results;
         },
 
         setting: function(name, value) {
@@ -1221,7 +1223,7 @@ $.fn.search.settings = {
         if(type == 'empty') {
           // if there are no results just hide the module
           console.log(this)
-          return ''
+          return null
           html += ''
             + '<div class="header">No Results</div class="header">'
             + '<div class="description">' + message + '</div class="description">'
