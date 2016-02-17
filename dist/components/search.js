@@ -545,7 +545,8 @@ $.fn.search = function(parameters) {
 
             // exit conditions if no source
             if(source === undefined || source === false) {
-              module.error(error.source);
+              // no need to throw an error
+              // module.error(error.source);
               return [];
             }
 
@@ -884,8 +885,11 @@ $.fn.search = function(parameters) {
         displayMessage: function(text, type) {
           type = type || 'standard';
           module.debug('Displaying message', text, type);
-          module.addResults( settings.templates.message(text, type) );
-          return settings.templates.message(text, type);
+          var results = settings.templates.message(text, type)
+          if (results === null) this.hideResults();
+          debugger
+          module.addResults( results );
+          return results;
         },
 
         setting: function(name, value) {
@@ -1220,8 +1224,7 @@ $.fn.search.settings = {
         // message type
         if(type == 'empty') {
           // if there are no results just hide the module
-          console.log(this)
-          return ''
+          return null
           html += ''
             + '<div class="header">No Results</div class="header">'
             + '<div class="description">' + message + '</div class="description">'
